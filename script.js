@@ -1,15 +1,13 @@
 const display = document.getElementById('display');
+const container = document.getElementById('container-calculator');
 const allButtons = document.querySelectorAll('.btn');
-
-const clear = document.getElementById('clear');
-const equals = document.getElementById('equals');
 
 let shouldResetDisplay = false;
 const operadores = ['+', '-', 'X', '÷'];
 
 allButtons.forEach(e => {
     e.addEventListener('click', () => {
-
+        
         const value = e.dataset.value || e.textContent;
 
         if(value === '='){
@@ -31,14 +29,14 @@ allButtons.forEach(e => {
 
         else{
                 if(display.value === ''){
-                    display.value = value + ' ';
+                    display.value = value;
                 }
                 else{
                         if(!shouldResetDisplay){
-                            display.value += ' ' + value + ' ';
+                            display.value += value;
                         }else{
                             if(operadores.includes(value)){
-                                display.value += ' ' + value + ' ';
+                                display.value += value;
                                 shouldResetDisplay = false;
                             }else{
                                 display.value = value;
